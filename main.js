@@ -14,7 +14,7 @@ new Vue({
 			// storing data
 			this.originalList = res;
 
-			// creating a copy of data which I will modify everytime I select an option
+			// creating a copy of data which gets modified everytime I select an option
 			this.albumsList = res;
 
 			// creating an immutable list of options without duplicates
@@ -29,13 +29,15 @@ new Vue({
 
 	methods: {
 		
+		// it updates the albumList based on the chosen option
 		handleSelection() {
+			// no genre is selected, therefore all the albums are displayed
 			if(this.genre === "") {
 				this.albumsList = this.originalList;
-				console.log(this.genre, this.albumsList);	
+			
+			// only albums matching the genre are displayed
 			} else {
 				this.albumsList = this.originalList.filter(album => album.genre === this.genre);
-				console.log(this.genre, this.albumsList);
 			}
 		}
 	},
