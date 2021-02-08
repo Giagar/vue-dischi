@@ -19,7 +19,9 @@ new Vue({
 
 			// creating an immutable list of options without duplicates
 			res.forEach(album => {
-				this.optionList.push(album.genre)
+				if(!this.optionList.includes(album.genre)) {
+					this.optionList.push(album.genre)
+				}
 			})
 
 		})
