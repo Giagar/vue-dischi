@@ -1,9 +1,9 @@
 new Vue({
 	el: "#root",
 	data: {
-		list: [],
-		optionList: ["All"],
-		albumList: [],
+		originalList: [],
+		optionsList: [],
+		albumsList: [],
 		genre: "",
 	},
 	mounted() {
@@ -12,15 +12,15 @@ new Vue({
 		.then(res => {
 			res = res.data.response;
 			// storing data
-			this.list = res;
+			this.originalList = res;
 
 			// creating a copy of data which I will modify everytime I select an option
-			this.albumList = res;
+			this.albumsList = res;
 
 			// creating an immutable list of options without duplicates
 			res.forEach(album => {
-				if(!this.optionList.includes(album.genre)) {
-					this.optionList.push(album.genre)
+				if(!this.optionsList.includes(album.genre)) {
+					this.optionsList.push(album.genre)
 				}
 			})
 
@@ -30,12 +30,12 @@ new Vue({
 	methods: {
 		
 		handleSelection() {
-			if(this.genre === "All") {
-				this.albumList = this.list;
-			console.log(this.genre, this.albumList);	
+			if(this.genre === "") {
+				this.albumsList = this.originalList;
+				console.log(this.genre, this.albumsList);	
 			} else {
-				this.albumList = this.list.filter(album => album.genre === this.genre);
-				console.log(this.genre, this.albumList);
+				this.albumsList = this.originalList.filter(album => album.genre === this.genre);
+				console.log(this.genre, this.albumsList);
 			}
 		}
 	},

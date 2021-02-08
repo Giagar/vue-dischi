@@ -17,14 +17,15 @@
                     <img src="logo.png" alt="logo" />
                     <label for="genres" style="color:white;">Select a genre: </label>
                     <select name="genres" id="genres" v-model="genre" @change="handleSelection">
-                        <option v-for="genre in optionList">{{genre}}</option>
+                        <option value="" v-model="genre">All</option>
+                        <option v-for="genre in optionsList">{{genre}}</option>
                     </select>
                 </div>
             </header>
         
             <div class="cds-container container">
                 <!-- Disco ad esempio -->
-                <div class="cd" v-for="album in albumList">
+                <div class="cd" v-for="album in albumsList">
                     <img :src="album.poster" alt="">
                     <h3>{{album.title}}</h3>
                     <span class="author">{{album.author}}</span>
