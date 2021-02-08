@@ -15,8 +15,8 @@
             <header>
                 <div class="container">
                     <img src="logo.png" alt="logo" />
+                    <label for="genres" style="color:white;">Select a genre: </label>
                     <select name="genres" id="genres" v-model="genre" @change="handleSelection">
-                        <option disabled value="">Please select one</option>
                         <option v-for="genre in optionList">{{genre}}</option>
                     </select>
                 </div>

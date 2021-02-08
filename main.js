@@ -2,7 +2,7 @@ new Vue({
 	el: "#root",
 	data: {
 		list: [],
-		optionList: [],
+		optionList: ["All"],
 		albumList: [],
 		genre: "",
 	},
@@ -30,9 +30,13 @@ new Vue({
 	methods: {
 		
 		handleSelection() {
-			
-			this.albumList = this.list.filter(album => album.genre === this.genre);
-			console.log("ok");
+			if(this.genre === "All") {
+				this.albumList = this.list;
+			console.log(this.genre, this.albumList);	
+			} else {
+				this.albumList = this.list.filter(album => album.genre === this.genre);
+				console.log(this.genre, this.albumList);
+			}
 		}
 	},
 })
